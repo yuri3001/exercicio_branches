@@ -1,14 +1,33 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <locale.h>
 int main()
 {
-    float n1,n2;
-    printf("Seja bem-vindo ao meu programa que faz soma\n");
-    printf("Digite um numero: ");
-    scanf("%f",&n1);
-    printf("\nDigite um outro numero: ");
-    scanf("%f",&n2);
-    printf("O resultado:  %.2f",n1+n2);
-        return 0;
+    setlocale(LC_ALL,"");
+    float a,b;
+    char op;
+    printf("Digite (ex:numero1 op numero2): ");
+    scanf("%f%c%f",&a,&op,&b);
+    switch(op)
+    {
+    case '+':
+        printf("Resultado: %.2f",a+b);
+    break;
+    case '-':
+        printf("Resultado: %.2f",a-b);
+    break;
+    case '*':
+        printf("Resultado: %.2f",a*b);
+    break;
+    case '/':
+        if(b==0)
+            printf("Não existe divisão por zero");
+        else
+            printf("Resultado:%.2f",a/b);
+        break;
+    default :
+        printf("Deu ruim");
+    }
+
+    return 0;
 }
